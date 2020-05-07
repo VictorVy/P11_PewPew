@@ -34,6 +34,11 @@ void setup()
   gameObjects = new ArrayList<GameObject>();
   player = new Player();
   
+  for(int i = 0; i < 100; i++)
+  {
+    gameObjects.add(new Obstacle());
+  }
+  
   gameObjects.add(player);
 }
 

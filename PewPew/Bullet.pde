@@ -16,5 +16,21 @@ class Bullet extends GameObject
     {
       hp = 0;
     }
+    
+    for(int i = 0; i < gameObjects.size(); i++)
+    {
+      GameObject obj = gameObjects.get(i);
+      
+      if(obj instanceof Obstacle)
+      {
+        if(dist(obj.x, obj.y, x, y) < obj.size / 2 + size / 2)
+        {
+          PVector bounce = new PVector(x - obj.x, y - obj.y);
+          bounce.setMag(10);
+          speedX = bounce.x;
+          speedY = bounce.y;
+        }
+      }
+    }
   }
 }
