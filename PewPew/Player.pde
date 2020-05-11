@@ -12,46 +12,46 @@ class Player extends GameObject
     //movement
     if(upPressed)
     {
-      speedY = -3;
+      speed.y = -3;
     }
     if(leftPressed)
     {
-      speedX = -3;
+      speed.x = -3;
     }
     if(downPressed)
     {
-      speedY = 3;
+      speed.y = 3;
     }
     if(rightPressed)
     {
-      speedX = 3;
+      speed.x = 3;
     }
     
     if(!upPressed && !downPressed)
     {
-      speedY = 0;
+      speed.y = 0;
     }
     if(!leftPressed && !rightPressed)
     {
-      speedX = 0;
+      speed.x = 0;
     }
     
     //bounds
-    if(x < size / 2)
+    if(pos.x < size / 2)
     {
-      x = size / 2;
+      pos.x = size / 2;
     }
-    else if(x > width - size / 2)
+    else if(pos.x > width - size / 2)
     {
-      x = width - size / 2;
+      pos.x = width - size / 2;
     }
-    if(y < size / 2)
+    if(pos.y < size / 2)
     {
-      y = size / 2;
+      pos.y = size / 2;
     }
-    else if(y > height - size / 2)
+    else if(pos.y > height - size / 2)
     {
-      y = height - size / 2;
+      pos.y = height - size / 2;
     }
     
     shoot();

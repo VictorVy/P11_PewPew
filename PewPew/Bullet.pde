@@ -2,17 +2,17 @@ class Bullet extends GameObject
 {
   Bullet()
   {
-    super(player.x, player.y, 5, 1, green);
-    PVector aim = new PVector(mouseX - player.x, mouseY - player.y);
+    super(player.pos.x, player.pos.y, 5, 1, green);
+    PVector aim = new PVector(mouseX - player.pos.x, mouseY - player.pos.y);
     aim.setMag(10);
-    speedX = aim.x;
-    speedY = aim.y;
+    speed.x = aim.x;
+    speed.y = aim.y;
   }
   
   void act()
   {
     super.act();
-    if(x < 0 - size / 2 || x > width + size / 2 || y < 0 - size / 2 || y > height + size / 2)
+    if(pos.x < 0 - size / 2 || pos.x > width + size / 2 || pos.y < 0 - size / 2 || pos.y > height + size / 2)
     {
       hp = 0;
     }
@@ -23,12 +23,9 @@ class Bullet extends GameObject
       
       if(obj instanceof Obstacle)
       {
-        if(dist(obj.x, obj.y, x, y) < obj.size / 2 + size / 2)
+        if(obj.pos.dist(pos) < obj.size / 2 + size / 2)
         {
-          PVector bounce = new PVector(x - obj.x, y - obj.y);
-          bounce.setMag(10);
-          speedX = bounce.x;
-          speedY = bounce.y;
+          speed = new PVector(pos.x - obj.pos.x, pos.y - obj.pos.y);
         }
       }
     }

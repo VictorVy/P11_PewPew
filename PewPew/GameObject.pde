@@ -1,48 +1,39 @@
 class GameObject
 {
-  float x, y, speedX, speedY, size, hp;
+  PVector pos, speed;
+  float size, hp;
   color colour;
   
   GameObject(color colour)
   {
-    x = random(0, width);
-    y = random(0, height);
-    speedX = speedY = 0;
+    pos = new PVector(random(0, width), random(0, height));
+    speed = new PVector(0, 0);
     size = random(25, 75);
     hp = 3;
     this.colour = colour;
   }
   GameObject(float x, float y, float size, float hp, color colour)
   {
-    this.x = x;
-    this.y = y;
+    pos = new PVector(x, y);
     this.size = size;
     this.hp = hp;
     this.colour = colour;
-    speedX = speedY = 0;
+    speed = new PVector(0, 0);
   }
   
   void show()
   {
     fill(colour);
-    ellipse(x, y, size, size);
+    ellipse(pos.x, pos.y, size, size);
   }
   
   void act()
   {
-    x += speedX;
-    y += speedY;
+    pos.add(speed);
   }
   
   boolean dead()
   {
-    if(hp <= 0)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+    return(hp <= 0);
   }
 }

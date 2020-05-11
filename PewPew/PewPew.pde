@@ -1,4 +1,4 @@
-color black = 0;
+ color black = 0;
 color white = 255;
 color gray = 225;
 color purple = #CA5FD6;
