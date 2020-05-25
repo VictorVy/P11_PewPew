@@ -9,7 +9,7 @@ class Obstacle extends GameObject
   {
     super.act();
     
-    if(player.pos.dist(pos) < player.size / 2 + size / 2)
+    if(touching(player))
     {
       player.speed = new PVector(player.pos.x - pos.x, player.pos.y - pos.y);
       player.speed.setMag(2);

@@ -12,6 +12,11 @@ void game()
       gameObjects.remove(i);
     }
   }
+  
+  if(frameCount % 60 == 0)
+  {
+    gameObjects.add(new Enemy());
+  }
 }
 
 void gameClicks()

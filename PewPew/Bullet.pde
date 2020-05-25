@@ -21,12 +21,14 @@ class Bullet extends GameObject
     {
       GameObject obj = gameObjects.get(i);
       
-      if(obj instanceof Obstacle)
+      if(obj instanceof Obstacle && touching(obj))
       {
-        if(obj.pos.dist(pos) < obj.size / 2 + size / 2)
-        {
-          speed = new PVector(pos.x - obj.pos.x, pos.y - obj.pos.y);
-        }
+        speed = new PVector(pos.x - obj.pos.x, pos.y - obj.pos.y);
+      }
+      
+      if(obj instanceof Enemy && touching(obj))
+      {
+        obj.hp--;
       }
     }
   }

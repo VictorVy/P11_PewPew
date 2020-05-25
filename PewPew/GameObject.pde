@@ -36,4 +36,24 @@ class GameObject
   {
     return(hp <= 0);
   }
+  
+  boolean touching(GameObject obj)
+  {
+    return(obj.pos.dist(pos) < obj.size / 2 + size / 2); 
+  }
+  
+  boolean touchingObstacle()
+  {
+    for(int i = 0; i < gameObjects.size(); i++)
+    {
+      GameObject obj = gameObjects.get(i);
+      
+      if(obj instanceof Obstacle && touching(obj))
+      {
+        return true;
+      }
+    }
+    
+    return false;
+  }
 }
