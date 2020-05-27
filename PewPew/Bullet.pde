@@ -1,12 +1,23 @@
 class Bullet extends GameObject
 {
-  Bullet()
+  Bullet(PVector pos, float size, float hp, color c)
   {
-    super(player.pos.x, player.pos.y, 5, 1, green);
-    PVector aim = new PVector(mouseX - player.pos.x, mouseY - player.pos.y);
-    aim.setMag(10);
-    speed.x = aim.x;
-    speed.y = aim.y;
+    super(pos.x, pos.y, size, 1, c);
+    
+    if(c == green)
+    {
+      PVector aim = new PVector(mouseX - player.pos.x, mouseY - player.pos.y);
+      aim.setMag(10);
+      speed.x = aim.x;
+      speed.y = aim.y;
+    }
+    else if(c == purple)
+    {
+      PVector aim = new PVector(player.pos.x - pos.x, player.pos.y - pos.y);
+      aim.setMag(10);
+      speed.x = aim.x;
+      speed.y = aim.y;
+    }
   }
   
   void act()
@@ -26,7 +37,7 @@ class Bullet extends GameObject
         speed = new PVector(pos.x - obj.pos.x, pos.y - obj.pos.y);
       }
       
-      if(obj instanceof Enemy && touching(obj))
+      if(obj instanceof Enemy && touching(obj) && colour == green)
       {
         obj.hp--;
       }

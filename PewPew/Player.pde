@@ -61,7 +61,7 @@ class Player extends GameObject
   {
     if(mousePressed && mouseButton == LEFT)
     {
-      gameObjects.add(new Bullet());
+      gameObjects.add(new Bullet(pos, 5, 1, green));
     }
   }
 }
